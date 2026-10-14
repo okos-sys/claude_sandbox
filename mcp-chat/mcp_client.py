@@ -61,6 +61,7 @@ class MCPClient:
         return result.messages
 
     async def read_resource(self, uri: str) -> Any:
+        print(f"  [client -> server] resources/read {uri}")
         result = await self.session().read_resource(AnyUrl(uri))
         resource = result.contents[0]
 

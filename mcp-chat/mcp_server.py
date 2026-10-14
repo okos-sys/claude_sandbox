@@ -101,10 +101,19 @@ The id of the document you need to reformat is:
 {doc_id}
 </document_id>
 
-Add in headers, bullet points, tables, etc as necessary. Feel free to add in extra text,
-but don't change the meaning of the report.
-Use the 'edit_document' tool to edit the document. After the document has been edited,
-respond with the final version of the doc. Don't explain your changes.
+Use the 'read_doc_contents' tool to read the document first.
+
+Rules:
+1. Change only the structure: you may add Markdown headings, bullet lists, tables, bold text and line breaks.
+2. Use only facts, names and numbers that appear in the original text. Do not add new facts, sections, conclusions, metrics or placeholder content.
+3. Headings must describe content that is actually in the document. If the document is short, keep the result short.
+4. Add a table or text-based chart only if the original document contains at least two numeric values to compare. Never invent data for a chart.
+
+Use the 'edit_document' tool to save the reformatted document.
+
+Output format:
+Your final response must contain ONLY the reformatted document in Markdown.
+Do not describe, justify or summarize your changes.
 """
     return [base.UserMessage(prompt)]
 
