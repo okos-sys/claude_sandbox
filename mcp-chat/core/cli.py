@@ -203,6 +203,16 @@ class CliApp:
                 if not user_input.strip():
                     continue
 
+                if user_input.startswith("/"):
+                    parts = user_input[1:].split()
+                    names = [p.name for p in self.prompts]
+                    if not parts or parts[0] not in names:
+                        print("Unknown command. Available: " + ", ".join("/" + n for n in names))
+                        continue
+                    if len(parts) < 2:
+                        print(f"Usage: /{parts[0]} <doc_id>")
+                        continue
+
                 response = await self.agent.run(user_input)
                 print(f"\nResponse:\n{response}")
 

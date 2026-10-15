@@ -53,11 +53,14 @@ class MCPClient:
         return await self.session().call_tool(tool_name, tool_input)
 
     async def list_prompts(self) -> list[types.Prompt]:
+        print("  [client -> server] prompts/list")
         result = await self.session().list_prompts()
         return result.prompts
 
     async def get_prompt(self, prompt_name, args: dict[str, str]):
+        print(f"  [client -> server] prompts/get {prompt_name} {args}")
         result = await self.session().get_prompt(prompt_name, args)
+        print(f"  [server -> client] {len(result.messages)} message(s), role: {result.messages[0].role}")
         return result.messages
 
     async def read_resource(self, uri: str) -> Any:
