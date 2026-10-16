@@ -14,6 +14,8 @@ CORPUS = [
     "i think we should check with the team",
     "i think that sounds good",
     "that sounds good to me",
+    "i think we should probably wait for the team",
+    "i don't think this program will work correctly and this sentence is here to make a mess with sequences",
 ]
 
 END = "<end>"
